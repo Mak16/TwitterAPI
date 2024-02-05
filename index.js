@@ -1,8 +1,8 @@
 const express = require('express')
 const app = express()
-const Port=5000;
+const Port=3000;
 app.get('/', function (req, res) {
   res.send('Hello World')
 })
 console.log('first test');
-app.listen(Port, `le server est demmaré au P ${Port}`)
+app.listen(Port, `le server est demmaré au Port ${Port}`)
