@@ -3,49 +3,6 @@ const jwt=require('jsonwebtoken');
 const { PrismaClient } = require('@prisma/client')
 const prisma=new PrismaClient
 
-// let users=[
-//     {
-//       "id": 1,
-//       "name": "Aime Nzolo",
-//       "username": "aimenzolo",
-//       "email": "aime@kadea.co",
-//       "profil": "https://pbs.twimg.com/profile_images/1136589142035521536/6Y2g5se__400x400.png",
-//       "thumbnailProfil": "https://pbs.twimg.com/profile_images/1136589142035521536/6Y2g5se__400x400.png",
-//       "Joined": "Joined October 2011",
-//       "password":"aime123"
-//     },
-//     {
-//       "id": 2,
-//       "name": "Vander Otis",
-//       "username": "VanderOtis",
-//       "email": "vander@kadea.co",
-//       "profil": "https://pbs.twimg.com/profile_images/488649894480318464/3L3wzEMB_400x400.jpeg",
-//       "thumbnailProfil": "https://pbs.twimg.com/profile_images/488649894480318464/3L3wzEMB_400x400.jpeg",
-//       "Joined": "Joined March 2014",
-//       "password":"vander123"
-//     },
-//     {
-//       "id": 3,
-//       "name": "Clementine Bauch",
-//       "username": "Samantha",
-//       "email": "Nathan@yesenia.net",
-//       "profil": "https://via.placeholder.com/600/392537",
-//       "thumbnailProfil": "https://via.placeholder.com/150/392537",
-//       "Joined": "Joined March 2014",
-//       "password":"clementine123"
-//     },
-//     {
-//       "id": 4,
-//       "name": "Patricia Lebsack",
-//       "username": "Karianne",
-//       "email": "Julianne.OConner@kory.org",
-//       "profil": "https://via.placeholder.com/600/392537",
-//       "thumbnailProfil": "https://via.placeholder.com/150/392537",
-//       "Joined": "Joined March 2014",
-//       "password":"patricia123"
-//     }
-// ]
-
 const privateKey=`-----BEGIN RSA PRIVATE KEY-----
 MIIEogIBAAKCAQEA64haUFTb3jA5IAGk5di1ELgNVZb+WP6+OWCe0FfjsaaoM6nx
 zQr+8yCyftzLIOLDdCdtwKOcGOPEA9vQptubzGM73Swa8cL9MFRgEx0DyNI5wzQl

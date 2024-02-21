@@ -1,9 +1,9 @@
 const express = require("express");
-const { getAll, getOne, deletePost, postTweet, updatePost } = require("../controllers/postController");
+const { getOne, deletePost, postTweet, updatePost, getAllPosts } = require("../controllers/postController");
 const router = express.Router();
 
 
-router.get("",getAll);
+router.get("",getAllPosts);
 router.get("/:id",getOne);
 router.delete('/:id', deletePost);
 router.post('', postTweet);
