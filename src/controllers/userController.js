@@ -1,5 +1,4 @@
 const jwt=require('jsonwebtoken');
-
 const { PrismaClient } = require('@prisma/client')
 const prisma=new PrismaClient
 
@@ -64,7 +63,7 @@ async function deleteUser(req, res){
 }
 
 async function createUser(req, res){
-    const user = await prisma.user.create({data:{email:req.body.email,name:req.body.name}}).then()
+    const user = await prisma.user.create({data:{email:req.body.email,name:req.body.name,thumbnailProfil:req.body.thumbnailProfil,password:req.body.password}}).then()
     res.json(user)
 }
 

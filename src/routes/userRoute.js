@@ -14,7 +14,7 @@ routerUser.get("", getAllUsers);
 // routerUser.get("/valid",jwtGuard, validationPassword);
 routerUser.get("/:id", getOneUser);
 routerUser.delete("/:id", deleteUser);
-routerUser.post("", createUser);
+routerUser.post("/", createUser);
 // routerUser.post("/auth", authentification);
 routerUser.put("/:id", updateUser);
 

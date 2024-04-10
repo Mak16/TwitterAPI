@@ -85,14 +85,11 @@ function getOne(req, res){
       return e.id==Id
     }))
 }
-function deletePost(req, res){
+
+async function deletePost(req, res){
     const Id=parseInt(req.params.id)
-        let index = tabs.findIndex(tabs=>tabs.id==Id)
-        if(index==(-1)){
-            return res.status(404).send('post pas trouvé')
-        }
-    tabs.splice(index,1)
-    res.json(tabs)
+    const post = await prisma.post.delete({where: {id:Id}}).then()
+    res.status(200).send(`Post ${Id} deleted successfully`)
 }
 function postTweet(req, res){
     tabs.push(req.body)
