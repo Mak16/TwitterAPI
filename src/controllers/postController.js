@@ -1,7 +1,6 @@
-const { json } = require("express")
-const { PrismaClient } = require('@prisma/client')
-const prisma=new PrismaClient
-
+const { json } = require("express");
+const { PrismaClient } = require("@prisma/client");
+const prisma = new PrismaClient();
 
 // let tabs=[
 //     {
@@ -75,35 +74,49 @@ const prisma=new PrismaClient
 //       "body": "quo et expedita modi cum officia vel magni\ndoloribus qui repudiandae\nvero nisi sit\nquos veniam quod sed accusamus veritatis error"
 //     }
 //   ]
-async function getAllPosts (req, res){
-  const posts = await prisma.post.findMany().then()
-  res.json(posts)
+async function getAllPosts(req, res) {
+  const posts = await prisma.post
+    .findMany({
+      include: {
+        user: {
+          select: {
+            email: true,
+            name: true,
+            thumbnailProfil: true,
+          },
+        },
+      },
+    })
+    .then();
+  res.json(posts);
 }
-function getOne(req, res){
-    const Id=req.params.id
-    res.send(tabs.filter((e)=>{
-      return e.id==Id
-    }))
+function getOne(req, res) {
+  const Id = req.params.id;
+  res.send(
+    tabs.filter((e) => {
+      return e.id == Id;
+    })
+  );
 }
 
-async function deletePost(req, res){
-    const Id=parseInt(req.params.id)
-    const post = await prisma.post.delete({where: {id:Id}}).then()
-    res.status(200).send(`Post ${Id} deleted successfully`)
+async function deletePost(req, res) {
+  const Id = parseInt(req.params.id);
+  const post = await prisma.post.delete({ where: { id: Id } }).then();
+  res.status(200).send(`Post ${Id} deleted successfully`);
 }
-function postTweet(req, res){
-    tabs.push(req.body)
-    // res.send("Tweet posté avec succès")
-    res.json(req.body)
+function postTweet(req, res) {
+  tabs.push(req.body);
+  // res.send("Tweet posté avec succès")
+  res.json(req.body);
 }
-function updatePost(req, res){
-    const Id=parseInt(req.params.id)
-    let index = tabs.findIndex(tabs=>tabs.id==Id)
-    if(index==(-1)){
-        return res.status(404).send('post pas trouvé')
-    }
-    tabs.splice(index, 1,req.body)
-    res.json(tabs)
+function updatePost(req, res) {
+  const Id = parseInt(req.params.id);
+  let index = tabs.findIndex((tabs) => tabs.id == Id);
+  if (index == -1) {
+    return res.status(404).send("post pas trouvé");
+  }
+  tabs.splice(index, 1, req.body);
+  res.json(tabs);
 }
 // function updateFildPost(req, res){
 //     const Id=parseInt(req.params.id)
@@ -115,6 +128,10 @@ function updatePost(req, res){
 //     tabs.splice(index, 1,req.body)
 //     res.json(tabs)
 // }
-module.exports= {
-  getAllPosts,getOne,deletePost,postTweet,updatePost,
-}
+module.exports = {
+  getAllPosts,
+  getOne,
+  deletePost,
+  postTweet,
+  updatePost,
+};
